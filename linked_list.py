@@ -61,6 +61,17 @@ class LinkedList:
 
             itr = itr.next
             count += 1
+    
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.get_length() == 0:
+            raise Exception("Invalid output")
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                node = Node(data_to_insert, itr.next)
+                itr.next = node
+            itr = itr.next
+
 
     def remove_at(self, index):
         if index<0 or index>=self.get_length():
@@ -74,11 +85,39 @@ class LinkedList:
         itr = self.head
         while itr:
             if count == index - 1:
-                itr.next = itr.next.next
+                itr.next = itr.next
                 break
 
             itr = itr.next
             count+=1
+    
+    def get_index(self, data):
+        if self.get_length() == 0:
+            raise Exception("Invalid Output")
+        
+        count = 0
+        itr = self.head
+        while itr:
+            if itr.data == data:
+                return count
+            count += 1
+            itr = itr.next
+
+    def remove_by_value(self, data):
+        if self.get_length() == 0:
+            raise Exception("Invalid Output")
+
+        if self.head.next == data:
+            self.head = self.head.next
+            return
+        itr = self.head
+        
+        while itr.next:
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
 
     def insert_values(self, data_list):
         self.head = None
@@ -89,10 +128,12 @@ class LinkedList:
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_values(["banana","mango","grapes","orange"])
-    ll.insert_at(1,"blueberry")
-    ll.remove_at(2)
+    ll.print()
+    # ll.insert_after_value("mango", "nigga")
+    ll.remove_by_value("grapes")
+    # ll.remove_at(2)
     ll.print()
 
-    ll.insert_values([45,7,12,567,99])
-    ll.insert_at_end(67)
-    ll.print()
+    # ll.insert_values([45,7,12,567,99])
+    # ll.insert_at_end(67)
+    # ll.print()
