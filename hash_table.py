@@ -31,7 +31,7 @@ with open("stock_prices.csv", "r") as f:
 class HashTable():
     def __init__(self) -> None:
         self.MAX = 100
-        self.arr = [None for i in range(self.MAX)]
+        self.arr = [[] for i in range(self.MAX)]
         # print(self.arr)
 
     def get_hash(self, key):
@@ -42,15 +42,31 @@ class HashTable():
     
     def __setitem__(self,key,val):
         h = self.get_hash(key)
-        self.arr[h] = val
+        found = False
+        for ind, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key:
+                self.arr[h][ind] = (key,val)
+                found = True
+                break
+        
+        if not found:
+            self.arr[h].append((key,val))
     
     def __getitem__(self, key):
         h = self.get_hash(key)
-        return self.arr[h]
+        for i in self.arr[h]:
+            if i[0] == key:
+                return i[1]
     
     def __delitem__(self,key):
         h = self.get_hash(key)
-        self.arr[h] = None 
+        for i, element in enumerate(self.arr[h]):
+            if element[0] == key:
+                del self.arr[h][i]
+
+        
+    
+
 
 
 
@@ -58,6 +74,7 @@ class HashTable():
 t = HashTable()
 t["march 6"] = 300
 t["march 1"] = 54
+t["march 17"] = 3400
 t["march 3"] = 342
 t["march 2"] = 877
 print(t["march 6"])
