@@ -37,6 +37,16 @@ class BinarySearchTree():
         
         return elements
     
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
+
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+    
     def search(self, val):
         if self.data == val:
             return True
@@ -54,6 +64,57 @@ class BinarySearchTree():
                 return self.right.search(val)
             else:
                 return False 
+        
+    def delete_min(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete_min(val)
+            else:
+                return None
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete_min(val)
+            else:
+                return None
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.right
+            
+            min_val = self.right.find_min()
+            self.data = min_val
+            self.right = self.right.delete_min(min_val)
+        
+        return self
+
+    def delete_max(self,val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete_max(val)
+            else:
+                return None
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete_max(val)
+            else:
+                return None
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.right
+            
+            max_val = self.left.find_max()
+            self.data = max_val
+            self.right = self.right.delete_max(max_val)
+
+        return self
+
 
 
 
@@ -72,3 +133,9 @@ if __name__ == "__main__":
     numbers_tree = build_tree(numbers)
     print(numbers_tree.in_order_traversal())
     print(numbers_tree.search(1))
+    print(numbers_tree.find_max())
+    print(numbers_tree.find_min())
+    numbers_tree.delete_min(4)
+    print(numbers_tree.in_order_traversal())
+    # numbers_tree.delete_min(4)
+    # print(numbers_tree.in_order_traversal())
