@@ -1,2 +1,2 @@
 # DATA STRUCTURES AND ALGORITHMS
-Practice and fundamental basics of DSA.
+Practice and fundamental and code to all the basics of DSA.
