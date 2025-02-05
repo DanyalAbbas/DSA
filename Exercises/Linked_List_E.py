@@ -91,7 +91,7 @@ class LinkedList:
         data_found = False
         while itr:
             if itr.data == data_after:
-                self.insert_at(count+1, data_to_insert)
+                itr.next = Node(data_to_insert, itr.next)
                 data_found = True
             itr = itr.next
             count += 1
@@ -101,10 +101,15 @@ class LinkedList:
     
     def remove_by_value(self, data):
         data_found = False
+        
+        if self.head.data == data:
+            self.head = self.head.next
+            return 
+
+
         itr = self.head
         while itr:
             if itr.next.data == data:
-                print(itr.data)
                 itr.next = itr.next.next
                 data_found = True
                 return
@@ -125,5 +130,7 @@ if __name__ == '__main__':
 
     ll.insert_values([45,7,12,567,99])
     ll.print()
-    ll.remove_by_value(99)
+    ll.insert_after_value(567,69)
+    ll.print()
+    ll.remove_by_value(45)
     ll.print()
