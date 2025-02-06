@@ -20,3 +20,15 @@ print(weather_dict)
 
 print(weather_dict["Jan 9"])
 print(weather_dict["Jan 4"])
+
+
+with open("poem.txt", "r") as rf:
+    d = {}
+    words =rf.read().split()
+    for i in set(words):
+        d[i] = words.count(i)
+
+print(d)
+
+
+
