@@ -41,7 +41,7 @@ if __name__ == "__main__":
     ll["d"] = 65
     print(ll.arr)
     print(ll["march 2"])
-    print(ll["d"])
+    print(ll["e"])
 
     del ll["march 1"]
     print(ll.arr)
