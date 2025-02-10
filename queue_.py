@@ -17,26 +17,26 @@ class Queue():
         return len(self.buffer)
     
 
+if __name__ == "__main__":
+    pq = Queue()
 
-pq = Queue()
-
-pq.enqueue({
+    pq.enqueue({
     'company': 'Wall Mart',
     'timestamp': '15 apr, 11.01 AM',
     'price': 131.10
-})
-pq.enqueue({
+    })
+    pq.enqueue({
     'company': 'Wall Mart',
     'timestamp': '15 apr, 11.02 AM',
     'price': 132
-})
-pq.enqueue({
+    })
+    pq.enqueue({
     'company': 'Wall Mart',
     'timestamp': '15 apr, 11.03 AM',
     'price': 135
-})
+    })
 
 
-print(pq.buffer)
-print(pq.dequeue())
-print(pq.size())
+    print(pq.buffer)
+    print(pq.dequeue())
+    print(pq.size())
