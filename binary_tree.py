@@ -24,7 +24,7 @@ class BinarySearchTree():
     def in_order_traversal(self):
         elements = []
 
-        # visiting the left tree
+        # visiting the left tree        
         if self.left:
             elements += self.left.in_order_traversal()
 
@@ -132,10 +132,10 @@ if __name__ == "__main__":
     numbers  = [17, 4, 1, 20, 9, 23, 18, 34]
     numbers_tree = build_tree(numbers)
     print(numbers_tree.in_order_traversal())
-    print(numbers_tree.search(1))
-    print(numbers_tree.find_max())
-    print(numbers_tree.find_min())
-    numbers_tree.delete_min(4)
-    print(numbers_tree.in_order_traversal())
+    # print(numbers_tree.search(1))
+    # print(numbers_tree.find_max())
+    # print(numbers_tree.find_min())
+    # numbers_tree.delete_min(4)
+    # print(numbers_tree.in_order_traversal())
     # numbers_tree.delete_min(4)
     # print(numbers_tree.in_order_traversal())
