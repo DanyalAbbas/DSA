@@ -19,6 +19,6 @@ def InsertionSortinDS(elements):
 
 if __name__ == "__main__":
     elements = [9,11,29,7,2,15,28]
-    # InsertionSort(elements)
-    InsertionSortinDS(elements)
+    InsertionSort(elements)
+    # InsertionSortinDS(elements)
     print(elements)
